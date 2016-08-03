@@ -25,7 +25,7 @@ public class WordAdapter extends ArrayAdapter<word> {
      * The context is used to inflate the layout file, and the List is the data we want
      * to populate into the lists
      *
-     * @param context        The current context. Used to inflate the layout file.
+     * @param context  The current context. Used to inflate the layout file.
      * @param wordList A List of word objects to display in a list
      */
     public WordAdapter(Activity context, ArrayList<word> wordList, int backgroundColorResId) {
@@ -43,14 +43,14 @@ public class WordAdapter extends ArrayAdapter<word> {
      * @param position    The AdapterView position that is requesting a view
      * @param convertView The recycled view to populate.
      *                    (search online for "android view recycling" to learn more)
-     * @param parent The parent ViewGroup that is used for inflation.
+     * @param parent      The parent ViewGroup that is used for inflation.
      * @return The View for the position in the AdapterView.
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Check if the existing view is being resused, otherwise inflate the view
         View listItemView = convertView;
-        if(listItemView == null) {
+        if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
 
@@ -71,16 +71,15 @@ public class WordAdapter extends ArrayAdapter<word> {
         ImageView iconView = (ImageView) listItemView.findViewById(R.id.list_item_icon);
         // Get the image resource ID from the current AndroidFlavor object and
         // set the image to iconView and make it visible if there is an image, and if not, remove the imageView itself.
-        if(currentWord.hasImage()) {
+        if (currentWord.hasImage()) {
             iconView.setImageResource(currentWord.getImageResourceId());
             iconView.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             iconView.setVisibility(View.GONE);
         }
 
         View textViewLayout = listItemView.findViewById(R.id.text_view_layout);
-        int backgroundColor = ContextCompat.getColor(getContext(),mBackgroundColorResId);
+        int backgroundColor = ContextCompat.getColor(getContext(), mBackgroundColorResId);
         textViewLayout.setBackgroundColor(backgroundColor);
 
         // Return the whole list item layout (containing 2 TextViews and an ImageView) so that it can be shown in the ListView
